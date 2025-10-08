@@ -1,0 +1,100 @@
+/* Estilos generales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #e9ecef; /* Fondo gris suave */
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.contenedor-formulario {
+  background-color: #ffffff;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 480px;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  color: #495057;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+label {
+  font-size: 1.2rem;
+  color: #495057;
+  margin-bottom: 8px;
+  display: block;
+  font-weight: 500;
+}
+
+input[type="text"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 18px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s;
+}
+
+input[type="text"]:focus,
+select:focus {
+  border-color: #17a2b8; /* Color azul más llamativo */
+  box-shadow: 0 0 5px rgba(23, 162, 184, 0.3);
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  background-color: #17a2b8;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #138496; /* Color más oscuro al pasar el mouse */
+  transform: translateY(-3px);
+}
+
+button:active {
+  transform: translateY(1px); /* Efecto al presionar el botón */
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 600px) {
+  .contenedor-formulario {
+    padding: 25px;
+  }
+
+  h1 {
+    font-size: 1.7rem;
+  }
+
+  input[type="text"],
+  input[type="date"],
+  select,
+  button {
+    padding: 12px;
+  }
+}

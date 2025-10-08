@@ -1,45 +1,58 @@
 <?php
-include("conectar.php");
+connection_aborted( );
+include("config/conectar.php");
+$consulta = "SELECT * FROM productos";
+$resultado = mysqli_query($conectar, $consulta);
+if (!$resultado) {
+ 
+       die("Error en la consulta: " . mysqli_error($conectar));
 
-// Obtener productos
-
-if (isset($_POST['productos'])) {
-    $resultado = $conexion->query("SELECT * FROM inventario ORDER BY id ASC")
-
-}
+    }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Inventario</title>
-<style>
-body { font-family: Arial; padding: 20px; background: #f5f5f5; }
-table { border-collapse: collapse; width: 100%; background: #fff; }
-th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
-th { background: #333; color: white; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario de Productos</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color:rgb(199, 38, 38);
+        }
+    </style>
 </head>
 <body>
-<h1>Inventario de Productos</h1>
-<table>
-<tr>
-<th>id</th>
-<th>nombre_producto</th>
-<th>precio</th>
-<th>stock</th>
-</tr>
-<?php while($row = $resultado->fetch_assoc()){ ?>
-<tr>
-<td><?= $row['id'] ?></td>
-<td><?= htmlspecialchars($row['nombre_producto']) ?></td>
-<td><?= number_format($row['precio'],2) ?></td>
-<td><?= $row['stock'] ?></td>
-</tr>
-<?php } ?>
-</table>
-</body>
-</html>
-<?php $conexion->close(); ?>
+    <h1>Inventario de Productos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>nombre</th>
+                <th>precio</th>
+                <th>stock</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php while ($fila = mysqli_fetch_assoc($resultado)) { ?>
+                <tr>
+                    <td><?php echo $fila['id']; ?></td>
+                    <td><?php echo $fila['nombre']; ?></td>
+                    <td><?php echo $fila['precio']; ?></td>
+                    <td><?php echo $fila['stock']; ?></td>
+
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
 
