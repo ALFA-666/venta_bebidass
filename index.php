@@ -14,6 +14,10 @@ if (isset($_POST['registro'])) {
     echo "<script>alert('Registro exitoso');</script>";
   } else {
     echo "<script>alert('Error en el registro');</script>";
+
+  
+  <h1><a href="inventario.php">Ir a inventario div</a></h1>
+        
   }
 }
 
@@ -36,7 +40,9 @@ if (isset($_POST['registro'])) {
 <input type="text" name="Celular" placecholder="Celular">
 <label>Correo</label>
 <input type="email" name="Correo" placecholder="Correo">
-<input type="submit" name="registro_cliente" value="Registrar">
+ <button type="submit">Registrar</button>
+
+
 </form>
 </body>
 </html>
