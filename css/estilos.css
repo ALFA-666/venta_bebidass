@@ -1,65 +1,73 @@
-/* Estilos generales para la página */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* ====== Estilos generales ====== */
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: #fff;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0;
 }
 
-/* Contenedor del dashboard */
+/* ====== Contenedor principal ====== */
 .contenedor-dashboard {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px;
+    width: 90%;
+    max-width: 800px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
+h1 {
+    margin-bottom: 40px;
+    font-size: 2.3em;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+}
+
+/* ====== Cuadros / Botones ====== */
 .cuadros {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
-    gap: 20px;
-    width: 60%; /* Ancho de los cuadros */
-    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
 }
 
 .cuadro {
-    background-color: #ffba00;
-    color: #fff;
-    text-align: center;
-    padding: 2em;
-    border-radius: 10px;
+    display: inline-block;
     text-decoration: none;
-    font-size: 1.2em;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: block;
-    text-transform: uppercase;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: 500;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    backdrop-filter: blur(5px);
 }
 
 .cuadro:hover {
-    background-color: #e0a800;
-    transform: translateY(-5px); /* Efecto hover */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    background: #ffffff33;
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
-.cuadro:active {
-    transform: translateY(2px); /* Efecto al presionar */
-}
+/* ====== Responsivo ====== */
+@media (max-width: 600px) {
+    .contenedor-dashboard {
+        padding: 30px 20px;
+    }
 
-/* Estilo para la versión móvil */
-@media (max-width: 768px) {
-    .cuadros {
-        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
-        width: 80%;
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .cuadro {
+        font-size: 1em;
+        padding: 15px;
     }
 }

@@ -1,92 +1,90 @@
-/* Estilos generales */
-* {
+/* ====== Estilos generales ====== */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ff7e5f, #feb47b);
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background-color: #f3f4f6; /* Fondo suave */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
+/* ====== Contenedor ====== */
 .contenedor-formulario {
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   width: 100%;
-  max-width: 500px;
-  box-sizing: border-box;
+  max-width: 450px;
+  position: relative;
 }
 
-h1 {
+/* ====== Formulario ====== */
+.formulario h1 {
   text-align: center;
-  font-size: 1.8rem;
+  margin-bottom: 25px;
   color: #333;
-  margin-bottom: 20px;
 }
 
-label {
-  font-size: 1.1rem;
-  color: #444;
-  margin-bottom: 5px;
+.formulario label {
   display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #333;
 }
 
-input[type="text"] {
+.formulario input {
   width: 100%;
   padding: 12px;
   margin-bottom: 20px;
   border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.formulario input:focus {
+  border-color: #ff7e5f;
   outline: none;
-  transition: border-color 0.3s;
+  box-shadow: 0 0 5px #ff7e5f;
 }
 
-input[type="text"]:focus {
-  border-color: #007bff; /* Color azul claro al hacer focus */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
-}
-
-button {
+.formulario button {
   width: 100%;
-  padding: 12px;
-  background-color: #007bff;
-  color: white;
+  padding: 15px;
+  background: #ff7e5f;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
   border: none;
-  border-radius: 6px;
-  font-size: 1.1rem;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: 0.3s;
 }
 
-button:hover {
-  background-color: #0056b3;
-  transform: translateY(-3px); /* Efecto hover */
+.formulario button:hover {
+  background: #feb47b;
 }
 
-button:active {
-  transform: translateY(1px); /* Efecto al presionar el botón */
+/* ====== Toast / mensaje emergente ====== */
+.toast {
+  position: fixed;
+  top: 20px;
+  right: -100%;
+  background-color: #4caf50; /* Verde para éxito */
+  color: white;
+  padding: 15px 25px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: right 0.5s ease;
+  z-index: 1000;
 }
 
-/* Estilos para pantallas pequeñas */
-@media (max-width: 600px) {
-  .contenedor-formulario {
-    padding: 20px;
-  }
-
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  input[type="text"],
-  button {
-    padding: 10px;
-  }
+.toast.show {
+  right: 20px;
 }
+

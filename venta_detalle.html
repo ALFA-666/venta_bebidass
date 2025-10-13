@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detalle de Venta</title>
+<link rel="stylesheet" href="css/registroVentas.css">
+</head>
+<body>
+<div class="contenedor">
+    <h1>Detalle de Venta</h1>
+
+    <!-- Información del cliente -->
+    <div class="info-cliente">
+        <p><strong>NIT:</strong> 12345678</p>
+        <p><strong>Razón Social:</strong> Juan Pérez</p>
+    </div>
+
+    <!-- Tabla de productos -->
+    <table class="tabla-venta">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Cerveza Paceña 440ml</td>
+                <td><input type="number" value="1" min="1" class="cantidad"></td>
+                <td class="precio">225</td>
+                <td class="subtotal">225</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Vino Kohlberg Tinto</td>
+                <td><input type="number" value="1" min="1" class="cantidad"></td>
+                <td class="precio">25</td>
+                <td class="subtotal">25</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="4" style="text-align:right">Total:</th>
+                <th id="total">250</th>
+            </tr>
+        </tfoot>
+    </table>
+
+    <button class="btn-confirmar">Confirmar Venta</button>
+</div>
+
+<script>
+    // Función para actualizar subtotales y total
+    const cantidades = document.querySelectorAll('.cantidad');
+    const filas = document.querySelectorAll('.tabla-venta tbody tr');
+    const totalElem = document.getElementById('total');
+
+    function actualizarTotal() {
+        let total = 0;
+        filas.forEach(fila => {
+            const cantidad = fila.querySelector('.cantidad').value;
+            const precio = fila.querySelector('.precio').innerText;
+            const subtotal = cantidad * precio;
+            fila.querySelector('.subtotal').innerText = subtotal;
+            total += subtotal;
+        });
+        totalElem.innerText = total;
+    }
+
+    cantidades.forEach(input => {
+        input.addEventListener('change', actualizarTotal);
+        input.addEventListener('input', actualizarTotal);
+    });
+
+    // Inicializar total al cargar
+    actualizarTotal();
+</script>
+</body>
+</html>

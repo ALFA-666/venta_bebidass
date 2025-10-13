@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Ventas</title>
+    <link rel="stylesheet" href="css/registroVentas.css">
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Registro de Ventas</h1>
+
+        <!-- Buscador de clientes -->
+        <div class="buscador-cliente">
+            <input type="text" placeholder="Buscar por ID de cliente">
+            <button class="agregar-usuario">+ Agregar Usuario</button>
+        </div>
+
+        <!-- Tabla de clientes -->
+        <table class="tabla-clientes">
+            <thead>
+                <tr>
+                    <th>NIT</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>12345678</td>
+                    <td>Juan</td>
+                    <td>Pérez</td>
+                    <td><a href="venta_detalle.html" class="btn-vender">Vender</a></td>
+                </tr>
+                <tr>
+                    <td>87654321</td>
+                    <td>María</td>
+                    <td>González</td>
+                    <td><a href="venta_detalle.html" class="btn-vender">Vender</a></td>
+                </tr>
+                <!-- Más clientes -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

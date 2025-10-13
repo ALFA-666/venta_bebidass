@@ -1,95 +1,117 @@
-/* Estilos generales */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* ====== Estilos generales ====== */
 body {
-  background-color: #f5f5f5;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.contenedor-formulario {
-  background-color: #ffffff;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 500px;
-  box-sizing: border-box;
-}
-
-h1 {
-  text-align: center;
-  font-size: 1.8rem;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-label {
-  font-size: 1.1rem;
-  color: #444;
-  margin-bottom: 5px;
-  display: block;
-}
-
-input[type="text"],
-input[type="number"] {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-  outline: none;
-  transition: border-color 0.3s;
-}
-
-input[type="text"]:focus,
-input[type="number"]:focus {
-  border-color: #28a745; /* Color verde claro cuando recibe foco */
-  box-shadow: 0 0 5px rgba(40, 167, 69, 0.2);
-}
-
-button {
-  width: 100%;
-  padding: 12px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-button:hover {
-  background-color: #218838; /* Fondo más oscuro en hover */
-  transform: translateY(-3px);
-}
-
-button:active {
-  transform: translateY(1px); /* Efecto de presionar el botón */
-}
-
-/* Estilos para pantallas pequeñas */
-@media (max-width: 600px) {
-  .contenedor-formulario {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    margin: 0;
     padding: 20px;
-  }
-
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  input[type="text"],
-  input[type="number"],
-  button {
-    padding: 10px;
-  }
+    color: #fff;
 }
+
+/* ====== Contenedor ====== */
+.contenedor {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 900px;
+    margin: auto;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* ====== Buscador de clientes ====== */
+.buscador-cliente {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.buscador-cliente input {
+    width: 70%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size: 14px;
+}
+
+.agregar-usuario {
+    background: #ff7e5f;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.agregar-usuario:hover {
+    background: #feb47b;
+}
+
+/* ====== Tabla clientes ====== */
+.tabla-clientes, .tabla-venta {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background: rgba(255,255,255,0.1);
+}
+
+.tabla-clientes th, .tabla-clientes td,
+.tabla-venta th, .tabla-venta td {
+    padding: 12px;
+    border-bottom: 1px solid #fff;
+    text-align: left;
+}
+
+.tabla-clientes th, .tabla-venta th {
+    background: rgba(255,255,255,0.2);
+}
+
+.btn-vender {
+    background: #4caf50;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-vender:hover {
+    background: #45a049;
+}
+
+/* ====== Inputs cantidad ====== */
+.tabla-venta input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* ====== Botón confirmar venta ====== */
+.btn-confirmar {
+    padding: 12px 20px;
+    background: #ff7e5f;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-confirmar:hover {
+    background: #feb47b;
+}
+
+/* ====== Responsivo ====== */
+@media(max-width: 700px){
+    .buscador-cliente {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .buscador-cliente input {
+        width: 100%;
+    }
+}
+
