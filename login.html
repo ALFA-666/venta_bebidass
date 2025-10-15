@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Licores del Valle</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body class="login-body">
+    <div class="login-container">
+        <h1>🍾 Licores del Valle</h1>
+        <p class="subtitulo">Iniciar sesión</p>
+
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="email">Usuario</label>
+                <input type="email" id="email" placeholder="Ingresa tu correo" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" placeholder="Ingresa tu contraseña" required>
+            </div>
+
+            <button type="submit" class="btn-login">Iniciar sesión</button>
+            <p id="error" class="error"></p>
+        </form>
+    </div>
+
+    <script>
+        // Al presionar el botón "Iniciar sesión"
+        document.getElementById("loginForm").addEventListener("submit", function(event){
+            event.preventDefault();
+
+            // Datos ingresados
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            // Credenciales correctas
+            const usuarioCorrecto = "yosetarisonyampacondori@gmail.com";
+            const contrasenaCorrecta = "MUERANSE12"; // puedes cambiar esta
+
+            // Verifica usuario y contraseña
+            if(email === usuarioCorrecto && password === contrasenaCorrecta){
+                // ✅ Redirige al index.html (panel principal)
+                window.location.href = "index.html";
+            } else {
+                // ❌ Muestra error
+                document.getElementById("error").textContent = "Usuario o contraseña incorrectos.";
+            }
+        });
+    </script>
+</body>
+</html>
