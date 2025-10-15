@@ -1,117 +1,115 @@
-/* ====== Estilos generales ====== */
+/* registroVentas.css */
+
 body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f3f7;
     margin: 0;
-    padding: 20px;
-    color: #fff;
+    padding: 0;
+    color: #333;
 }
 
-/* ====== Contenedor ====== */
 .contenedor {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 30px;
-    border-radius: 20px;
-    max-width: 900px;
-    margin: auto;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 30px 40px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
 }
 
-/* ====== Buscador de clientes ====== */
+h1 {
+    text-align: center;
+    font-size: 2em;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
 .buscador-cliente {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+    gap: 10px;
 }
 
 .buscador-cliente input {
-    width: 70%;
-    padding: 10px;
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
     border-radius: 8px;
-    border: none;
-    font-size: 14px;
+    font-size: 1em;
+    transition: all 0.2s;
 }
 
-.agregar-usuario {
-    background: #ff7e5f;
+.buscador-cliente input:focus {
+    outline: none;
+    border-color: #2980b9;
+    box-shadow: 0 0 5px rgba(41, 128, 185, 0.5);
+}
+
+.buscador-cliente .agregar-usuario {
+    padding: 12px 25px;
+    background: #27ae60;
     color: #fff;
     border: none;
-    padding: 10px 15px;
     border-radius: 8px;
     cursor: pointer;
-    transition: 0.3s;
+    font-weight: bold;
+    transition: background 0.2s;
 }
 
-.agregar-usuario:hover {
-    background: #feb47b;
+.buscador-cliente .agregar-usuario:hover {
+    background: #2ecc71;
 }
 
-/* ====== Tabla clientes ====== */
-.tabla-clientes, .tabla-venta {
+.tabla-clientes {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
-    background: rgba(255,255,255,0.1);
+    margin-top: 20px;
+    font-size: 1em;
 }
 
-.tabla-clientes th, .tabla-clientes td,
-.tabla-venta th, .tabla-venta td {
-    padding: 12px;
-    border-bottom: 1px solid #fff;
+.tabla-clientes thead {
+    background: #2980b9;
+    color: #fff;
+}
+
+.tabla-clientes th, .tabla-clientes td {
+    padding: 15px 12px;
     text-align: left;
 }
 
-.tabla-clientes th, .tabla-venta th {
-    background: rgba(255,255,255,0.2);
+.tabla-clientes tbody tr {
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s;
+}
+
+.tabla-clientes tbody tr:hover {
+    background: #f1f1f1;
 }
 
 .btn-vender {
-    background: #4caf50;
-    color: white;
-    padding: 8px 12px;
-    border-radius: 6px;
+    display: inline-block;
+    padding: 8px 18px;
+    background: #e67e22;
+    color: #fff;
+    border-radius: 8px;
     text-decoration: none;
     font-weight: bold;
-    transition: 0.3s;
+    transition: background 0.2s;
 }
 
 .btn-vender:hover {
-    background: #45a049;
+    background: #d35400;
 }
 
-/* ====== Inputs cantidad ====== */
-.tabla-venta input[type="number"] {
-    width: 60px;
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-/* ====== Botón confirmar venta ====== */
-.btn-confirmar {
-    padding: 12px 20px;
-    background: #ff7e5f;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-confirmar:hover {
-    background: #feb47b;
-}
-
-/* ====== Responsivo ====== */
-@media(max-width: 700px){
+@media (max-width: 700px) {
     .buscador-cliente {
         flex-direction: column;
         gap: 10px;
     }
 
-    .buscador-cliente input {
-        width: 100%;
+    .tabla-clientes th, .tabla-clientes td {
+        padding: 10px 8px;
+        font-size: 0.9em;
     }
 }
-

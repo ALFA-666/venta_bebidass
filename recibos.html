@@ -1,1 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recibo de Compra</title>
+<style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: #f4f6f8;
+    color: #333;
+}
 
+.contenedor {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.info-recibo {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 0.95em;
+    color: #555;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+thead th {
+    background: #2980b9;
+    color: #fff;
+}
+
+tbody tr:hover {
+    background: #f1f1f1;
+    transition: background 0.2s;
+}
+
+tfoot td {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.total {
+    background: #27ae60;
+    color: #fff;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.btn-imprimir {
+    display: block;
+    margin: 0 auto;
+    padding: 12px 25px;
+    background: #2980b9;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.btn-imprimir:hover {
+    background: #3498db;
+}
+</style>
+</head>
+<body>
+<div class="contenedor">
+    <h1>Recibo de Compra</h1>
+
+    <div class="info-recibo">
+        <div id="info-cliente">
+            <p><strong>Cliente:</strong> <span id="cliente">--</span></p>
+            <p><strong>NIT:</strong> <span id="nit">--</span></p>
+        </div>
+        <div id="fecha"></div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Precio (Bs)</th>
+                <th>Cantidad</th>
+                <th>Subtotal (Bs)</th>
+            </tr>
+        </thead>
+        <tbody id="detalle"></tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">Total</td>
+                <td class="total" id="total">0</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <button class="btn-imprimir" onclick="window.print()">Imprimir Recibo</button>
+</div>
+
+<script>
+// Datos del cliente (puede traer desde localStorage o input de venta)
+const cliente = JSON.parse(localStorage.getItem('cliente')) || {nombre: "Juan Pérez", nit: "12345678"};
+document.getElementById('cliente').innerText = cliente.nombre;
+document.getElementById('nit').innerText = cliente.nit;
+
+// Obtener carrito desde localStorage
+let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+let detalle = document.getElementById('detalle');
+let total = 0;
+
+// Agregar productos a la tabla
+carrito.forEach(item => {
+    let subtotal = item.precio * item.cantidad;
+    total += subtotal;
+
+    let fila = document.createElement('tr');
+    fila.innerHTML = `
+        <td>${item.nombre} ${item.presentacion}</td>
+        <td>${item.precio.toFixed(2)}</td>
+        <td>${item.cantidad}</td>
+        <td>${subtotal.toFixed(2)}</td>
+    `;
+    detalle.appendChild(fila);
+});
+
+// Mostrar total
+document.getElementById('total').innerText = total.toFixed(2) + ' Bs';
+
+// Mostrar fecha actual
+let fecha = new Date();
+document.getElementById('fecha').innerText = "Fecha: " + fecha.toLocaleString();
+
+// Limpiar carrito después de mostrar recibo
+localStorage.removeItem('carrito');
+</script>
+</body>
+</html>

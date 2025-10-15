@@ -12,8 +12,8 @@
 
     <!-- Información del cliente -->
     <div class="info-cliente">
-        <p><strong>NIT:</strong> 12345678</p>
-        <p><strong>Razón Social:</strong> Juan Pérez</p>
+        <p><strong>NIT:</strong> <span id="nit">12345678</span></p>
+        <p><strong>Nombre:</strong> <span id="nombre">Juan Pérez</span></p>
     </div>
 
     <!-- Tabla de productos -->
@@ -39,46 +39,70 @@
                 <td>2</td>
                 <td>Vino Kohlberg Tinto</td>
                 <td><input type="number" value="1" min="1" class="cantidad"></td>
-                <td class="precio">25</td>
-                <td class="subtotal">25</td>
+                <td class="precio">28</td>
+                <td class="subtotal">28</td>
             </tr>
         </tbody>
         <tfoot>
             <tr>
                 <th colspan="4" style="text-align:right">Total:</th>
-                <th id="total">250</th>
+                <th id="total">253</th>
             </tr>
         </tfoot>
     </table>
 
-    <button class="btn-confirmar">Confirmar Venta</button>
+    <button class="btn-confirmar" onclick="confirmarVenta()">Confirmar Venta</button>
 </div>
 
 <script>
-    // Función para actualizar subtotales y total
-    const cantidades = document.querySelectorAll('.cantidad');
-    const filas = document.querySelectorAll('.tabla-venta tbody tr');
-    const totalElem = document.getElementById('total');
+// Actualizar subtotales y total
+const cantidades = document.querySelectorAll('.cantidad');
+const filas = document.querySelectorAll('.tabla-venta tbody tr');
+const totalElem = document.getElementById('total');
 
-    function actualizarTotal() {
-        let total = 0;
-        filas.forEach(fila => {
-            const cantidad = fila.querySelector('.cantidad').value;
-            const precio = fila.querySelector('.precio').innerText;
-            const subtotal = cantidad * precio;
-            fila.querySelector('.subtotal').innerText = subtotal;
-            total += subtotal;
+function actualizarTotal() {
+    let total = 0;
+    filas.forEach(fila => {
+        const cantidad = parseInt(fila.querySelector('.cantidad').value);
+        const precio = parseFloat(fila.querySelector('.precio').innerText);
+        const subtotal = cantidad * precio;
+        fila.querySelector('.subtotal').innerText = subtotal.toFixed(2);
+        total += subtotal;
+    });
+    totalElem.innerText = total.toFixed(2);
+}
+
+cantidades.forEach(input => {
+    input.addEventListener('change', actualizarTotal);
+    input.addEventListener('input', actualizarTotal);
+});
+
+actualizarTotal();
+
+// Función para enviar al recibo
+function confirmarVenta() {
+    let carrito = [];
+    filas.forEach(fila => {
+        carrito.push({
+            nombre: fila.cells[1].innerText,
+            precio: parseFloat(fila.cells[3].innerText),
+            cantidad: parseInt(fila.cells[2].querySelector('input').value),
+            presentacion: "" // opcional si quieres agregar
         });
-        totalElem.innerText = total;
-    }
-
-    cantidades.forEach(input => {
-        input.addEventListener('change', actualizarTotal);
-        input.addEventListener('input', actualizarTotal);
     });
 
-    // Inicializar total al cargar
-    actualizarTotal();
+    // Guardar cliente en localStorage
+    localStorage.setItem('cliente', JSON.stringify({
+        nombre: document.getElementById('nombre').innerText,
+        nit: document.getElementById('nit').innerText
+    }));
+
+    // Guardar carrito en localStorage
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+
+    // Redirigir a recibo
+    window.location.href = 'recibos.html';
+}
 </script>
 </body>
 </html>
