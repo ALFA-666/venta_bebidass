@@ -1,26 +1,22 @@
 <?php
-include("conectar.php");
+include("conexion.php");
 
-//insertar registro
 if (isset($_POST['registro'])) {
   $nombre = $_POST['nombre'];
   $apellido = $_POST['apellido'];
-  $correo = $_POST['Celular'];
-  $telefono = $_POST['Correo'];
+  $celular = $_POST['Celular'];
 
-  $insertar = "INSERT INTO registro_cliente (Nombre, Apellido, Celular, Correo) VALUES ('$nombre', '$apellido', '$correo', '$telefono')";
+
+  $insertar = "INSERT INTO clientes (Nombre, Apellido, Celular)
+               VALUES ('$nombre', '$apellido', '$celular')";
   $resultado = mysqli_query($conectar, $insertar);
-  if ($resultado) {
-    echo "<script>alert('Registro exitoso');</script>";
-  } else {
-    echo "<script>alert('Error en el registro');</script>";
 
-  
-  <h1><a href="inventario.php">Ir a inventario div</a></h1>
-        
+  if ($resultado) {
+    echo "<script>alert('✅ Registro exitoso');</script>";
+  } else {
+    echo "<script>alert('❌ Error en el registro');</script>";
   }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -31,21 +27,25 @@ if (isset($_POST['registro'])) {
 </head>
 <body>
 
-<form action="Registro_cliente.php" name="venta_bebidass" method="POST">
-<label>Nombre</label>
-<input type="text" name="Nombre" placecholder="Nombre">
-<label>Apellido</label>
-<input type="text" name="Apellido" placecholder="Apellido">
-<label>Celular</label>
-<input type="text" name="Celular" placecholder="Celular">
-<label>Correo</label>
-<input type="email" name="Correo" placecholder="Correo">
- <button type="submit">Registrar</button>
+<h1><a href="inventario.php">Ir a inventario</a></h1>
 
+<form action="index.php" method="POST">
+  <label>Nombre</label>
+  <input type="text" name="nombre" placeholder="Nombre">
 
+  <label>Apellido</label>
+  <input type="text" name="apellido" placeholder="Apellido">
+
+  <label>Celular</label>
+  <input type="text" name="Celular" placeholder="Celular">
+
+  <label>Correo</label>
+  <input type="email" name="Correo" placeholder="Correo">
+
+  <button type="submit" name="registro">Registrar</button>
 </form>
+
 </body>
 </html>
-
 
 
